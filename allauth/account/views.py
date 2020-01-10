@@ -562,7 +562,7 @@ class EmailView(AjaxCapableProcessFormViewMixin, FormView):
         for emailaddress in self.request.user.emailaddress_set.all():
             data.append(
                 {
-                    "id": emailaddress.pk,
+                    "id": str(emailaddress.pk),
                     "email": emailaddress.email,
                     "verified": emailaddress.verified,
                     "primary": emailaddress.primary,

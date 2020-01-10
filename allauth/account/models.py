@@ -4,6 +4,7 @@ from django.core import signing
 from django.db import models, transaction
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from hashid_field import HashidAutoField
 
 from .. import app_settings as allauth_app_settings
 from . import app_settings, signals
@@ -14,6 +15,7 @@ from .utils import user_email
 
 class EmailAddress(models.Model):
 
+    id = HashidAutoField(primary_key=True)
     user = models.ForeignKey(
         allauth_app_settings.USER_MODEL,
         verbose_name=_("user"),
@@ -135,7 +137,7 @@ class EmailConfirmationHMAC:
 
     @property
     def key(self):
-        return signing.dumps(obj=self.email_address.pk, salt=app_settings.SALT)
+        return signing.dumps(obj=str(self.email_address.pk), salt=app_settings.SALT)
 
     @classmethod
     def from_key(cls, key):

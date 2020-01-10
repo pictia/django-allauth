@@ -2,6 +2,7 @@ import os
 
 
 SECRET_KEY = "psst"
+HASHID_FIELD_SALT = "secret"
 SITE_ID = 1
 ALLOWED_HOSTS = ("*",)
 USE_I18N = False

@@ -137,6 +137,7 @@ METADATA = dict(
     install_requires=[
         "Django >= 2.0",
         "python3-openid >= 3.0.8",
+        "django-hashid-field >= 3.0.0",
         "requests-oauthlib >= 0.3.0",
         "requests",
         "pyjwt[crypto] >= 1.7",

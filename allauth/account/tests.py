@@ -1157,13 +1157,13 @@ class EmailFormTests(TestCase):
         data = json.loads(resp.content.decode("utf8"))
         assert data["data"] == [
             {
-                "id": self.email_address.pk,
+                "id": str(self.email_address.pk),
                 "email": "john1@example.org",
                 "primary": True,
                 "verified": True,
             },
             {
-                "id": self.email_address2.pk,
+                "id": str(self.email_address2.pk),
                 "email": "john2@example.org",
                 "primary": False,
                 "verified": False,
